@@ -1,4 +1,5 @@
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { MdMail } from "react-icons/md";
 
 const socialLinks = [
@@ -16,22 +17,28 @@ const socialLinks = [
   },
   {
     id: "github",
-    href: "https://github.com/ksp1998",
+    href: "https://github.com/ksuthar21",
     background: "#333333",
     icon: <FaGithub />,
   },
   {
     id: "facebook",
-    href: "https://www.facebook.com/ksuthar1998",
+    href: "https://www.facebook.com/ksuthar21",
     background: "#3b5998",
     icon: <FaFacebookF />,
   },
   {
     id: "instagram",
-    href: "https://www.instagram.com/ksuthar98/",
+    href: "https://www.instagram.com/ksuthar__21/",
     background:
       "linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)",
     icon: <FaInstagram />,
+  },
+  {
+    id: "x",
+    href: "https://x.com/ksuthar21",
+    background: "#000000",
+    icon: <FaXTwitter />,
   },
 ];
 

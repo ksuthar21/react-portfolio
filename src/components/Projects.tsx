@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
-import ProjectCard from "./ProjectCard";
-import Stars from "./Stars";
 import { FaArrowCircleRight } from "react-icons/fa";
-import myProjects from "../utils/myProjects.ts";
+import ProjectCard, { type Project } from "./ProjectCard";
+import Stars from "./Stars";
+import projectsData from "../data/projects.json";
 
-const githubEndpoint =
-  "https://api.github.com/users/ksuthar21/repos?sort=date&per_page=100";
-const accessToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+// Project metadata is bundled at build time (refresh with `npm run sync:projects`)
+// instead of fetching 100 repos from the GitHub API on every page view.
+const projects = projectsData as Project[];
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Record<string, string>[]>([]);
-
-  useEffect(() => {
-    (() => {
-      const headers: Record<string, string> = {};
-      if (accessToken) {
-        headers["Authorization"] = `Bearer ${accessToken}`;
-      }
-
-      fetch(githubEndpoint, { headers })
-        .then((res) => res.json())
-        .then((json) => Array.isArray(json) && setProjects(json))
-        .catch((error) => console.log(error));
-    })();
-  }, []);
-
   return (
     <section id="projects" className="section">
       <div className="container">
@@ -32,41 +15,23 @@ const Projects = () => {
           <h2 className="section-heading">Projects</h2>
         </div>
         <div className="row">
-          {!projects.length && (
-            <>
-              <ProjectCard project={{ language: " " }} skeleton={true} />
-              <ProjectCard project={{ language: " " }} skeleton={true} />
-              <ProjectCard project={{ language: " " }} skeleton={true} />
-            </>
-          )}
-
-          {projects.length > 0 &&
-            myProjects.map(({ id, thumbnails, techs }) => {
-              const project = projects.find(
-                (project) => Number(project.id) === id
-              );
-              return (
-                <ProjectCard
-                  key={id}
-                  project={project}
-                  thumbnail={thumbnails}
-                  techs={techs}
-                />
-              );
-            })}
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
 
-        <center>
+        <div className="view-more-wrapper">
           <a
             className="btn view-more"
             href="https://github.com/ksuthar21?tab=repositories"
-            target="_new"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <Stars count={10} style={{ zIndex: 1 }} width={165} />
+            <Stars count={10} style={{ zIndex: 1 }} width={165} height={50} />
             <span>View More</span>
             <FaArrowCircleRight />
           </a>
-        </center>
+        </div>
       </div>
     </section>
   );

@@ -1,77 +1,70 @@
 import { useEffect, useState } from "react";
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    window.location.hash &&
-      (
-        document.querySelector(
-          `a[href="${window.location.hash}"]`
-        ) as HTMLLinkElement | null
-      )?.click();
-  }, 500);
-});
+import { AVATAR_URL } from "../utils/constants";
 
 const navItems = [
-  {
-    href: "#intro",
-    text: "Home",
-  },
-  {
-    href: "#projects",
-    text: "Projects",
-  },
-  {
-    href: "#about",
-    text: "About",
-  },
-  {
-    href: "#contact",
-    text: "Contact",
-  },
+  { href: "#intro", text: "Home" },
+  { href: "#projects", text: "Projects" },
+  { href: "#about", text: "About" },
+  { href: "#contact", text: "Contact" },
 ];
+
+const sectionIds = navItems.map((item) => item.href.slice(1));
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#intro");
 
+  // Track the active section with a rAF-throttled scroll handler that reads four
+  // bounding rects, instead of hit-testing with elementsFromPoint on every event.
   useEffect(() => {
-    const scrollHandler = () => {
-      const x = window.innerWidth / 2;
-      const y = (scrollY % Math.round(window.innerHeight)) + 250;
+    let frame = 0;
 
-      const elements = document.elementsFromPoint(x, y);
+    const update = () => {
+      frame = 0;
+      const marker = window.innerHeight * 0.4;
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
 
-      elements.map((element) => {
-        const id = element.getAttribute("id");
-        id === "contact" && setActive("#contact");
-        id === "about" && setActive("#about");
-        id === "projects" && setActive("#projects");
-        id === "intro" && setActive("#intro");
-      });
+      let current = sectionIds[0];
+      if (atBottom) {
+        current = sectionIds[sectionIds.length - 1];
+      } else {
+        for (const id of sectionIds) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= marker) current = id;
+        }
+      }
+      setActive(`#${current}`);
     };
 
-    window.addEventListener("scroll", scrollHandler);
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
 
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, [active]);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
     <header id="header" className={active === "#intro" ? "transparent" : ""}>
       <div className="container">
         <nav id="navbar" className="navbar fixed-top">
           <a className="logo" href="#top">
-            <img
-              src="https://avatars.githubusercontent.com/u/36969418"
-              alt="logo"
-            />
+            <img src={AVATAR_URL} alt="Kiran Suthar" width={50} height={50} />
           </a>
           <button
-            className={`nav-menu-toggler ${open && "open"}`}
+            className={open ? "nav-menu-toggler open" : "nav-menu-toggler"}
             type="button"
-            data-toggle="collapse"
-            data-target="#nav-menu"
             aria-controls="nav-menu"
-            aria-expanded="true"
+            aria-expanded={open}
             aria-label="Toggle navigation"
             onClick={() => setOpen(!open)}
           >
@@ -79,14 +72,12 @@ const Header = () => {
             <span className="bar" />
             <span className="bar" />
           </button>
-          <div id="nav-menu" className={`nav-menu ${!open && "mobile-hidden"}`}>
+          <div id="nav-menu" className={open ? "nav-menu" : "nav-menu mobile-hidden"}>
             <ul className="nav-items">
               {navItems.map((navItem) => (
                 <li className="nav-item" key={navItem.href}>
                   <a
-                    className={`nav-link ${
-                      navItem.href === active && "active"
-                    }`}
+                    className={navItem.href === active ? "nav-link active" : "nav-link"}
                     href={navItem.href}
                     onClick={() => setOpen(false)}
                   >

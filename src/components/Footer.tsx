@@ -10,7 +10,11 @@ const Footer = () => {
 
       <div className="content">
         Made with ❤️ By{" "}
-        <a href="https://www.linkedin.com/in/kiransuthar/" target="_new">
+        <a
+          href="https://www.linkedin.com/in/kiransuthar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Kiran Suthar
         </a>
       </div>

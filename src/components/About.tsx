@@ -1,4 +1,5 @@
 import Stars from "./Stars";
+import { AVATAR_URL } from "../utils/constants";
 
 const skills = [
   { name: "JavaScript", percent: 90 },
@@ -23,8 +24,12 @@ const About = () => {
           <div className="col">
             <div className="profile">
               <img
-                src="https://avatars.githubusercontent.com/u/36969418"
-                alt="Kiran Suthar Profile"
+                src={AVATAR_URL}
+                alt="Kiran Suthar"
+                width={200}
+                height={200}
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

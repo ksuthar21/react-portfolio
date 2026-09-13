@@ -1,0 +1,150 @@
+[
+  {
+    "id": 726853910,
+    "name": "next-medico",
+    "description": "A NextJs application for handling the admin process for a medical store. The project is build with Next, ReactJs, TypeScript and MongoDB. URL: https://next-medico.vercel.app",
+    "homepage": "https://next-medico.vercel.app",
+    "html_url": "https://github.com/ksuthar21/next-medico",
+    "thumbnails": {
+      "front": "/images/next-medico-login.webp",
+      "back": "/images/next-medico-dashboard.webp"
+    },
+    "techs": [
+      "Next.js",
+      "ReactJS",
+      "Context API",
+      "Custom Hooks",
+      "TypeScript",
+      "Material UI",
+      "Bootstrap",
+      "SASS",
+      "REST API",
+      "MongoDB",
+      "mongoose"
+    ]
+  },
+  {
+    "id": 741117769,
+    "name": "react-ks-mdb",
+    "description": "A UI Project for Movie Database using the TMDB APIs...",
+    "homepage": "https://react-ks-mdb.vercel.app",
+    "html_url": "https://github.com/ksuthar21/react-ks-mdb",
+    "thumbnails": {
+      "front": "/images/react-mdb-home.webp",
+      "back": "/images/react-mdb-movies.webp"
+    },
+    "techs": [
+      "ReactJS",
+      "Redux",
+      "RTK",
+      "React Router",
+      "TailwindCSS",
+      "REST API",
+      "TMDB API"
+    ]
+  },
+  {
+    "id": 739701801,
+    "name": "ks-blogs",
+    "description": "KS Blogs is a demo site made using Appwrite, Tailwind, Redux and React Routing",
+    "homepage": "https://ks-blogss.vercel.app",
+    "html_url": "https://github.com/ksuthar21/ks-blogs",
+    "thumbnails": {
+      "front": "/images/react-blogs-home.webp",
+      "back": "/images/react-blogs-all.webp"
+    },
+    "techs": [
+      "ReactJS",
+      "Redux",
+      "RTK",
+      "React Router",
+      "TypeScript",
+      "TailwindCSS",
+      "Appwrite"
+    ]
+  },
+  {
+    "id": 738830596,
+    "name": "rtk-todo-app",
+    "description": "A Todo App made using Redux Toolkit...",
+    "homepage": "https://ks-rtk-todo.vercel.app/",
+    "html_url": "https://github.com/ksuthar21/rtk-todo-app",
+    "thumbnails": {
+      "front": "/images/react-todo-app-dark.webp",
+      "back": "/images/react-todo-app-light.webp"
+    },
+    "techs": [
+      "ReactJS",
+      "Redux",
+      "RTK",
+      "SASS"
+    ]
+  },
+  {
+    "id": 378732731,
+    "name": "weather-app-nodejs-ks",
+    "description": "Weather app with Node.js server using Express JS and handlebar template engine...",
+    "homepage": "https://weather-app-nodejs-ks.up.railway.app/",
+    "html_url": "https://github.com/ksuthar21/weather-app-nodejs-ks",
+    "thumbnails": {
+      "front": "/images/weather-app-nodejs-dark.webp",
+      "back": "/images/weather-app-nodejs-light.webp"
+    },
+    "techs": [
+      "JavaScript",
+      "NodeJs",
+      "Express.js",
+      "Handlebar",
+      "CSS"
+    ]
+  },
+  {
+    "id": 385034118,
+    "name": "react-snake-game",
+    "description": "Snake game created using ReactJs and CSS",
+    "homepage": "https://snake-ks.netlify.app",
+    "html_url": "https://github.com/ksuthar21/react-snake-game",
+    "thumbnails": {
+      "front": "/images/react-snake-game.webp",
+      "back": "/images/react-snake-game-playing.webp"
+    },
+    "techs": [
+      "JavaScript",
+      "ReactJS",
+      "CSS"
+    ]
+  },
+  {
+    "id": 383492913,
+    "name": "analog-clock",
+    "description": "A simple analog clock build using HTML, CSS and JavaScript!",
+    "homepage": "https://analog-clock-ks.netlify.app",
+    "html_url": "https://github.com/ksuthar21/analog-clock",
+    "thumbnails": {
+      "front": "/images/analog-clock-dark.webp",
+      "back": "/images/analog-clock-light.webp"
+    },
+    "techs": [
+      "HTML",
+      "JavaScript",
+      "CSS"
+    ]
+  },
+  {
+    "id": 416856907,
+    "name": "photogram",
+    "description": "It's an Android application that allows users to create accounts, browse images, upload images, chat with other users, etc.",
+    "homepage": "",
+    "html_url": "https://github.com/ksuthar21/photogram",
+    "thumbnails": {
+      "front": "/images/photogram-splash.webp",
+      "back": "/images/photogram-home.webp"
+    },
+    "techs": [
+      "Android",
+      "Android Studio",
+      "Java",
+      "Firebase"
+    ]
+  }
+]
